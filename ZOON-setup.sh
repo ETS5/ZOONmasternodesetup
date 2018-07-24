@@ -131,6 +131,8 @@ fi
 
 #Installing Daemon
 cd ~
+sudo rm -r .zoon
+sudo rm /usr/bin/zoon*
 sudo rm ZOON-linux64.zip
 wget https://github.com/cleanblockchain/zoon/releases/download/0.13/ZOON-linux64.zip
 sudo unzip ZOON-linux64.zip
