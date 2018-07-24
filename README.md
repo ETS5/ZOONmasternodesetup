@@ -1,10 +1,10 @@
-# ZOONmasternodesetup
+# ZOONzoonodesetup
 
 **NOTE:** This installation guide is provided as is with no warranties of any kind.
 
-**NOTE:** This newer version of the script (v1.1) does not ask for IP address or masternode genkey anymore. Instead the __script will detect VPS IP Address and generate Masternode Private Key (genkey) automatically__. It will also create a 2GB swap file.  
+**NOTE:** This newer version of the script (v1.1) does not ask for IP address or zoonode genkey anymore. Instead the __script will detect VPS IP Address and generate Zoonode Private Key (genkey) automatically__. It will also create a 2GB swap file.  
 
-If you follow the steps and use a newly installed Ubuntu 16.04 VPS, it will automatically configure and start your Zoon Masternode. Ubuntu 17.10 and other Linux distros are not currently supported.
+If you follow the steps and use a newly installed Ubuntu 16.04 VPS, it will automatically configure and start your Zoon Zoonode. Ubuntu 17.10 and other Linux distros are not currently supported.
 
 Steps:
 
@@ -44,7 +44,7 @@ restart PuTTy and login in as user instead of root
 
 **1)** In Windows wallet, **create a new receiving address** and name it **mn1** for example.
 
-**2) Send exactly 2000 ZOON to this new address**. NOTE: if you are setting up many masternodes and wish to perform multiple 2k payments in a row before following through steps (3)-(6), make sure you select correct __inputs__ for each payment or __lock__ your 2k coins manually after each payment using Coin Control Features, otherwise your coins may get reused and only last payment will yield valid zoonode output. The wallet will lock your payments automatically after you restart it in step (6).
+**2) Send exactly 2000 ZOON to this new address**. NOTE: if you are setting up many zoonodes and wish to perform multiple 2k payments in a row before following through steps (3)-(6), make sure you select correct __inputs__ for each payment or __lock__ your 2k coins manually after each payment using Coin Control Features, otherwise your coins may get reused and only last payment will yield valid zoonode output. The wallet will lock your payments automatically after you restart it in step (6).
 
 **3) View zoonode outputs** - output transaction ID and transaction index in wallet Debug Console (Tools -> Debug console) by typing:
 
@@ -61,36 +61,36 @@ To download (clone) the script to your VPS, use the following command in VPS Lin
 
 ```bash
 cd ~
-git clone https://github.com/ETS5/ZOONmasternodesetup
+git clone https://github.com/ETS5/ZOONzoonodesetup
 ```
 
 __NOTE:__ in case if you will need to re-download this setup script from github repo, use the following git command:
 ```bash
-cd ~/ZOONmasternodesetup
+cd ~/ZOONzoonodesetup
 git reset --hard
 git pull
 ```
 
-**5) Run the install script** which will download wallet binaries from github repository and install and configure your masternode with all necessary options.
+**5) Run the install script** which will download wallet binaries from github repository and install and configure your zoonode with all necessary options.
 
 ```bash
-cd ~/ZOONmasternodesetup
-sudo bash ZOON-setup.sh [Masternode_Private_Key]
+cd ~/ZOONzoonodesetup
+sudo bash ZOON-setup.sh [Zoonode_Private_Key]
 ```
-__NOTE:__ This process may take anywhere from 5 to 20 minutes, depending on your VPS HW specs. If it's not your very first ever masternode setup, you may want to speed up the process by doing things in parallel. While the ZOONmasternodesetup script is running on the VPS, you can spend this time getting ready to start your new masternode from your Hot Wallet (also referred to as Control Wallet) by following instructions in next step (6).
+__NOTE:__ This process may take anywhere from 5 to 20 minutes, depending on your VPS HW specs. If it's not your very first ever zoonode setup, you may want to speed up the process by doing things in parallel. While the ZOONzoonodesetup script is running on the VPS, you can spend this time getting ready to start your new zoonode from your Hot Wallet (also referred to as Control Wallet) by following instructions in next step (6).
 
-Once the script completes, it will output your VPS Public IP Address and masternode Private Key which it generated for this masternode. Detailed instructions on what to do next will be provided on the VPS console.
+Once the script completes, it will output your VPS Public IP Address and zoonode Private Key which it generated for this zoonode. Detailed instructions on what to do next will be provided on the VPS console.
 
-**6) Prepare your Hot Wallet and start the new masternode**. In this step you will introduce your new masternode to the ZOON network by issuing a masternode start command from your wallet, which will broadcast information proving that
-The collateral for this masternode is secured in your wallet. Without this step your new masternode will function as a regular ZOON node (wallet) and will not yield any rewards. Usually you keep your Hot Wallet on your Windows machine where you securely store your funds for the MN collateral.
+**6) Prepare your Hot Wallet and start the new zoonode**. In this step you will introduce your new zoonode to the ZOON network by issuing a zoonode start command from your wallet, which will broadcast information proving that
+The collateral for this zoonode is secured in your wallet. Without this step your new zoonode will function as a regular ZOON node (wallet) and will not yield any rewards. Usually you keep your Hot Wallet on your Windows machine where you securely store your funds for the MN collateral.
 
-Basically all you need to do is just edit the __masternode.conf__ text file located in your hot wallet __data directory__ to enter a few masternode parameters, restart the wallet and then issue a start command for this new masternode.
+Basically all you need to do is just edit the __zoonode.conf__ text file located in your hot wallet __data directory__ to enter a few zoonode parameters, restart the wallet and then issue a start command for this new zoonode.
 
-There are two ways to edit __masternode.conf__. The easiest way is to open the file from within the wallet app (Tools -> Open Masternode Configuration File). Optionally, you can open it from the wallet data folder directly by navigating to the %appdata%/roaming/zoon. Just hit Win+R, paste %appdata%/roaming/zoon, hit Enter and then open **masternode.conf** with Notepad for editing. 
+There are two ways to edit __zoonode.conf__. The easiest way is to open the file from within the wallet app (Tools -> Open Zoonode Configuration File). Optionally, you can open it from the wallet data folder directly by navigating to the %appdata%/roaming/zoon. Just hit Win+R, paste %appdata%/roaming/zoon, hit Enter and then open **zoonode.conf** with Notepad for editing. 
 
 It does not matter which way you open the file or how you edit it. In either case you will need to restart your wallet when you are done in order for it to pickup the changes you made in the file. Make sure to save it before you restart your wallet.
 
-__Here's what you need to do in masternode.conf file__. For each masternode you are going to setup, you need to enter one separate line of text  which will look like this:
+__Here's what you need to do in zoonode.conf file__. For each zoonode you are going to setup, you need to enter one separate line of text  which will look like this:
 
 ```bash
 mn1 231.321.11.22:8328 27KTCRKgqjBgQbAS2BN9uX8GHBu16wXfr4z4hNDZWQAubqD8fr6 5d46f69f1770cb051baf594d011f8fa5e12b502ff18509492de28adfe2bbd229 0
@@ -98,24 +98,24 @@ mn1 231.321.11.22:8328 27KTCRKgqjBgQbAS2BN9uX8GHBu16wXfr4z4hNDZWQAubqD8fr6 5d46f
 
 The format for this string is as follow:
 ```bash
-masternodealias publicipaddress:8328 masternodeprivatekey output-tx-ID output-tx-index
+zoonodealias publicipaddress:8328 zoonodeprivatekey output-tx-ID output-tx-index
 ```
 
 Where:
-__masternodealias__ - your human readable masternode name (alias) which you use to identify the masternode. It can be any unique name as long as you can recognize it. It exists only in your wallet and has no impact on the masternode functionality.
+__zoonodealias__ - your human readable zoonode name (alias) which you use to identify the zoonode. It can be any unique name as long as you can recognize it. It exists only in your wallet and has no impact on the zoonode functionality.
 
-__publicipaddress:8328__ - this must be your masternode public IP address, which is usually the IP address of your VPS, accessible from the Internet. The new script (v1.3) will detect your IP address automatically. The __:8328__ suffix is the predefined and fixed TCP port which is being used in ZOON network for node-to-node and wallet-to-node communications. This port needs to be opened on your VPS server firewall so that others can talk to your masternode. The setup script takes care of it. NOTE: some VPS service providers may have additional firewall on their network which you may need to configure to open TCP port 8328. Vultr does not require this.
+__publicipaddress:8328__ - this must be your zoonode public IP address, which is usually the IP address of your VPS, accessible from the Internet. The new script (v1.3) will detect your IP address automatically. The __:8328__ suffix is the predefined and fixed TCP port which is being used in ZOON network for node-to-node and wallet-to-node communications. This port needs to be opened on your VPS server firewall so that others can talk to your zoonode. The setup script takes care of it. NOTE: some VPS service providers may have additional firewall on their network which you may need to configure to open TCP port 8328. Vultr does not require this.
 
-__masternodeprivatekey__ - this is your masternode private key which script will generate automatically. Each masternode will use its own unique private key to maintain secure communication with your Hot Wallet. You will have to generate a new key for each masternode you are setting up. Only your masternode and your hot wallet will be in possession of this private key. In case if you will need to change this key later for some reason, you will have to update it in your __masternode.conf__ in Hot Wallet as well as in the zoon.conf in data directory on the masternode VPS.
+__zoonodeprivatekey__ - this is your zoonode private key which script will generate automatically. Each zoonode will use its own unique private key to maintain secure communication with your Hot Wallet. You will have to generate a new key for each zoonode you are setting up. Only your zoonode and your hot wallet will be in possession of this private key. In case if you will need to change this key later for some reason, you will have to update it in your __zoonode.conf__ in Hot Wallet as well as in the zoon.conf in data directory on the zoonode VPS.
 
-__output-tx-ID__ - this is your collateral payment Transaction ID which is unique for each masternode. It can be easily located in the transaction details (Transactions tab) or in the list of your **zoonode outputs**. This TxID also acts as unique masternode ID on the Zoon network.
+__output-tx-ID__ - this is your collateral payment Transaction ID which is unique for each zoonode. It can be easily located in the transaction details (Transactions tab) or in the list of your **zoonode outputs**. This TxID also acts as unique zoonode ID on the Zoon network.
 
 __output-tx-index__ - this is a single-digit value (0 or 1) which is shown in the **zoonode outputs**
 
 **NOTE:** The new MN setup script will provide this configuration string for your convenience.
 You just need to replace:
 ```bash
-	mn1 - with your desired masternode name (alias)
+	mn1 - with your desired zoonode name (alias)
 
 	TxId - with Transaction Id from zoonode outputs
 
@@ -308,3 +308,4 @@ or BTC to **3H1JNkydHxDbhoXLREpxXccvyNh7Awr2jX**
 
 
 (c) 2018 by Rush Hour, for ZOON
+
