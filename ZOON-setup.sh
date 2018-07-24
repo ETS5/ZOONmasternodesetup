@@ -1,12 +1,12 @@
 #!/bin/bash
-# ZOON Masternode Setup Script V1.3 for Ubuntu 16.04 LTS
+# ZOON Zoonode Setup Script V1.3 for Ubuntu 16.04 LTS
 # (c) 2018 by RUSH HOUR MINING for ZOON
 #
 # Script will attempt to autodetect primary public IP address
-# and generate masternode private key unless specified in command line
+# and generate zoonode private key unless specified in command line
 #
 # Usage:
-# bash ZOON-setup.sh [Masternode_Private_Key]
+# bash ZOON-setup.sh [Zoonode_Private_Key]
 #
 # Example 1: Existing genkey created earlier is supplied
 # bash ZOON-setup.sh 27dSmwq9CabKjo2L3UD1HvgBP3ygbn8HdNmFiGFoVbN1STcsypy
@@ -54,7 +54,7 @@ function stop_daemon {
 genkey=$1
 
 clear
-echo -e "${YELLOW}ZOON Masternode Setup Script V1.3 for Ubuntu 16.04 LTS${NC}"
+echo -e "${YELLOW}ZOON Zoonode Setup Script V1.3 for Ubuntu 16.04 LTS${NC}"
 echo -e "${GREEN}Updating system and installing required packages...${NC}"
 sudo DEBIAN_FRONTEND=noninteractive apt-get update -y
 
@@ -164,15 +164,15 @@ EOF
 
     sudo chmod 755 -R ~/.zoon/zoon.conf
 
-    #Starting daemon first time just to generate masternode private key
+    #Starting daemon first time just to generate Zoonode private key
     zoond -daemon
     delay 30
 
-    #Generate masternode private key
-    echo -e "${YELLOW}Generating masternode private key...${NC}"
+    #Generate zoonode private key
+    echo -e "${YELLOW}Generating zoonode private key...${NC}"
     genkey=$(zoon-cli zoonode genkey)
     if [ -z "$genkey" ]; then
-        echo -e "${RED}ERROR: Can not generate masternode private key.${NC} \a"
+        echo -e "${RED}ERROR: Can not generate zoonode private key.${NC} \a"
         echo -e "${RED}ERROR:${YELLOW}Reboot VPS and try again or supply existing genkey as a parameter.${NC}"
         exit 1
     fi
