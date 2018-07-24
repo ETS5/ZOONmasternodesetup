@@ -1,5 +1,5 @@
 #!/bin/bash
-# ZOON Zoonode Setup Script V1.3 for Ubuntu 16.04 LTS
+# ZOON zoonode Setup Script V1.3 for Ubuntu 16.04 LTS
 # (c) 2018 by RUSH HOUR MINING for ZOON
 #
 # Script will attempt to autodetect primary public IP address
@@ -135,17 +135,17 @@ sudo rm ZOON-linux64.zip
 wget https://github.com/cleanblockchain/zoon/releases/download/0.13/ZOON-linux64.zip
 sudo unzip ZOON-linux64.zip
 sudo rm ZOON-linux64.zip
-sudo mv ~/ZOON ~/ZOONmasternodesetup/
+sudo mv ~/ZOON ~/ZOONzoonodesetup/
 
 stop_daemon
 
 # Deploy binaries to /usr/bin
-sudo cp ZOONmasternodesetup/ZOON/zoon* /usr/bin/
-sudo chmod 755 -R ~/ZOONmasternodesetup
+sudo cp ZOONzoonodesetup/ZOON/zoon* /usr/bin/
+sudo chmod 755 -R ~/ZOONzoonodesetup
 sudo chmod 755 /usr/bin/zoon*
 
-# Deploy masternode monitoring script
-cp ~/ZOONmasternodesetup/nodemon.sh /usr/local/bin
+# Deploy zoonode monitoring script
+cp ~/ZOONzoonodesetup/nodemon.sh /usr/local/bin
 sudo chmod 711 /usr/local/bin/nodemon.sh
 
 #Create datadir
@@ -164,7 +164,7 @@ EOF
 
     sudo chmod 755 -R ~/.zoon/zoon.conf
 
-    #Starting daemon first time just to generate Zoonode private key
+    #Starting daemon first time just to generate zoonode private key
     zoond -daemon
     delay 30
 
@@ -212,10 +212,10 @@ fi
 rm tempcron
 
 echo -e "========================================================================
-${YELLOW}Zoonode setup is complete!${NC}
+${YELLOW}zoonode setup is complete!${NC}
 ========================================================================
-Zoonode was installed with VPS IP Address: ${YELLOW}$publicip${NC}
-Zoonode Private Key: ${YELLOW}$genkey${NC}
+zoonode was installed with VPS IP Address: ${YELLOW}$publicip${NC}
+zoonode Private Key: ${YELLOW}$genkey${NC}
 Now you can add the following string to the zoonode.conf file
 for your Hot Wallet (the wallet with your ZOON collateral funds):
 ======================================================================== \a"
