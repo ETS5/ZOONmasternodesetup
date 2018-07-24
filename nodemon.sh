@@ -24,7 +24,7 @@ uptime
 echo '==========================================================================='
 echo 'Masternode Status: \n# zoon-cli zoonode status' && zoon-cli -datadir=$datadir zoonode status
 echo '==========================================================================='
-echo 'Sync Status: \n# zoon-cli mnsync status' &&  zoon-cli -datadir=$datadir mnsync status
+echo 'Sync Status: \n# zoon-cli znsync status' &&  zoon-cli -datadir=$datadir znsync status
 echo '==========================================================================='
 echo 'Masternode Information: \n# zoon-cli getinfo' && zoon-cli -datadir=$datadir getinfo
 echo '==========================================================================='
