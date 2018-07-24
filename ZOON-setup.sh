@@ -147,8 +147,8 @@ sudo chmod 755 -R ~/ZOONzoonodesetup
 sudo chmod 755 /usr/bin/zoon*
 
 # Deploy zoonode monitoring script
-cp ~/ZOONzoonodesetup/nodemon.sh /usr/local/bin
-sudo chmod 711 /usr/local/bin/nodemon.sh
+cp ~/ZOONzoonodesetup/zoonmon.sh /usr/local/bin
+sudo chmod 711 /usr/local/bin/zoonmon.sh
 
 #Create datadir
 if [ ! -f ~/.zoon/zoon.conf ]; then 
@@ -289,8 +289,8 @@ To monitor system resource utilization and running processes:
 ${YELLOW}htop${NC}
 ========================================================================
 To view the list of peer connections, status of your zoonode, 
-sync status etc. in real-time, run the nodemon.sh script:
-${YELLOW}nodemon.sh${NC}
+sync status etc. in real-time, run the zoonmon.sh script:
+${YELLOW}zoonmon.sh${NC}
 or just type 'node' and hit <TAB> to autocomplete script name.
 ========================================================================
 Enjoy your ZOON zoonode and thanks for using this setup script!
@@ -298,7 +298,7 @@ If you found it helpful, please donate ZOON to:
 ofQzJU37B2a7G2EZ52qyhKjV6pAqJ3KYpp
 ...and make sure to check back for updates!
 "
-# Run nodemon.sh
-nodemon.sh
+# Run zoonmon.sh
+zoonmon.sh
 
 # EOF
