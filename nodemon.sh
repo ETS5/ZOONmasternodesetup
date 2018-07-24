@@ -4,7 +4,7 @@
 #Processing command line params
 if [ -z $1 ]; then dly=1; else dly=$1; fi   # Default refresh time is 1 sec
 
-datadir="/$USER/.RPWN$2"   # Default datadir is /root/.ZOON
+datadir="/$USER/.zoon$2"   # Default datadir is /root/.zoon
  
 # Install jq if it's not present
 dpkg -s jq 2>/dev/null >/dev/null || sudo apt-get -y install jq
