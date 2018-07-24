@@ -131,15 +131,16 @@ fi
 
 #Installing Daemon
 cd ~
-#sudo rm ZOON-linux64.zip
-#wget https://github.com/cleanblockchain/zoon/releases/download/0.13/ZOON-linux64.zip
-#sudo unzip ZOON-linux64.zip
-#sudo rm ZOON-linux64.zip
+sudo rm ZOON-linux64.zip
+wget https://github.com/cleanblockchain/zoon/releases/download/0.13/ZOON-linux64.zip
+sudo unzip ZOON-linux64.zip
+sudo rm ZOON-linux64.zip
+sudo mv ~/ZOON ~/ZOONmasternodesetup/
 
 stop_daemon
 
 # Deploy binaries to /usr/bin
-sudo cp ZOONmasternodesetup/ZOON-linux64.zip/ZOON* /usr/bin/
+sudo cp ZOONmasternodesetup/ZOON/zoon* /usr/bin/
 sudo chmod 755 -R ~/ZOONmasternodesetup
 sudo chmod 755 /usr/bin/zoon*
 
