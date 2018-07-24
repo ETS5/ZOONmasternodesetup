@@ -31,3 +31,4 @@ echo '==========================================================================
 echo 'Usage: nodemon.sh [refresh delay] [datadir index]'
 echo 'Example: nodemon.sh 10 22 will run every 10 seconds and query zoond in /$USER/.zoon22'
 echo '\n\nPress Ctrl-C to Exit...'"
+
