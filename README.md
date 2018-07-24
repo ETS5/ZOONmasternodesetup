@@ -108,16 +108,16 @@ __publicipaddress:8328__ - this must be your masternode public IP address, which
 
 __masternodeprivatekey__ - this is your masternode private key which script will generate automatically. Each masternode will use its own unique private key to maintain secure communication with your Hot Wallet. You will have to generate a new key for each masternode you are setting up. Only your masternode and your hot wallet will be in possession of this private key. In case if you will need to change this key later for some reason, you will have to update it in your __masternode.conf__ in Hot Wallet as well as in the zoon.conf in data directory on the masternode VPS.
 
-__output-tx-ID__ - this is your collateral payment Transaction ID which is unique for each masternode. It can be easily located in the transaction details (Transactions tab) or in the list of your **masternode outputs**. This TxID also acts as unique masternode ID on the Zoon network.
+__output-tx-ID__ - this is your collateral payment Transaction ID which is unique for each masternode. It can be easily located in the transaction details (Transactions tab) or in the list of your **zoonode outputs**. This TxID also acts as unique masternode ID on the Zoon network.
 
-__output-tx-index__ - this is a single-digit value (0 or 1) which is shown in the **masternode outputs**
+__output-tx-index__ - this is a single-digit value (0 or 1) which is shown in the **zoonode outputs**
 
 **NOTE:** The new MN setup script will provide this configuration string for your convenience.
 You just need to replace:
 ```bash
 	mn1 - with your desired masternode name (alias)
 
-	TxId - with Transaction Id from masternode outputs
+	TxId - with Transaction Id from zoonode outputs
 
 	TxIdx - with Transaction Index (0 or 1)
 
@@ -125,52 +125,52 @@ You just need to replace:
 
 Use only one space between the elements in each line, don't use TABs.
 
-Once you think you are all done editing masternode.conf file, please make sure you save the changes!
+Once you think you are all done editing zoonode.conf file, please make sure you save the changes!
 
-IMPORTANT: Spend some time and double check each value you just entered. Copy/paste mistakes will cause your masternode (or other nodes) to behave erratically and will be extremely difficult to troubleshoot. Make sure you don't have any duplicates in the list of masternodes. Often people tend to speed up the process and copy the previous line and then forget to modify the IP address or copy the IP address partially. If anything goes wrong with the masternode later, the masternode.conf file should be your primary suspect in any investigation.
+IMPORTANT: Spend some time and double check each value you just entered. Copy/paste mistakes will cause your zoonode (or other nodes) to behave erratically and will be extremely difficult to troubleshoot. Make sure you don't have any duplicates in the list of zoonodes. Often people tend to speed up the process and copy the previous line and then forget to modify the IP address or copy the IP address partially. If anything goes wrong with the zoonode later, the zoonode.conf file should be your primary suspect in any investigation.
 
-Finally, you need to either __restart__ the wallet app, unlock it with your encryption password. At this point the wallet app will read your __masternode.conf__ file and populate the Masternodes tab. Newly added nodes will show up as MISSING, which is normal.
+Finally, you need to either __restart__ the wallet app, unlock it with your encryption password. At this point the wallet app will read your __zoonode.conf__ file and populate the zoonodes tab. Newly added nodes will show up as MISSING, which is normal.
 
-Once the wallet is fully synchronized and your masternode setup script on VPS has finished its synchronization with the network, you can **issue a start broadcast** from your hot wallet to tell the others on Zoon network about your new masternode.
+Once the wallet is fully synchronized and your zoonode setup script on VPS has finished its synchronization with the network, you can **issue a start broadcast** from your hot wallet to tell the others on Zoon network about your new zoonode.
 
 Todo so you can either run a simple command in Debug Console (Tools -> Debug console):
 
 ```bash
-masternode start-alias <masternodename>
+zoonode start-alias <zoonodename>
 ```
 
 Example:
 ```bash
-masternode start-alias mn1
+zoonode start-alias mn1
 ```
 
-Or, as an alternative, you can issue a start broadcast from the wallet Masternodes tab by right-clicking on the node:
+Or, as an alternative, you can issue a start broadcast from the wallet zoonodes tab by right-clicking on the node:
 
 ```bash
-Masternodes -> Select masternode -> RightClick -> start alias
+zoonodes -> Select zoonode -> RightClick -> start alias
 ```
 
-The wallet should respond with **"masternode started successfully"** as long as the masternode 3k ZOON collateral payment was done correctly in step (2) and it had at least 15 confirmations. This only means that the conditions to send the start broadcast are satisfied and that the start command was communicated to peers.
+The wallet should respond with **"zoonode started successfully"** as long as the zoonode 3k ZOON collateral payment was done correctly in step (2) and it had at least 15 confirmations. This only means that the conditions to send the start broadcast are satisfied and that the start command was communicated to peers.
 
-Go back to your VPS and wait for the status of your new masternode to change to "Masternode successfully started". This may take some time and you may need to wait for several hours until your new masternode completes sync process.
+Go back to your VPS and wait for the status of your new zoonode to change to "zoonode successfully started". This may take some time and you may need to wait for several hours until your new zoonode completes sync process.
 
-Finally, to **monitor your masternode status** you can use the following commands in Linux console of your masternode VPS:
+Finally, to **monitor your zoonode status** you can use the following commands in Linux console of your zoonode VPS:
 
 ```bash
-zoon-cli masternode status
+zoon-cli zoonode status
 
 zoon-cli mnsync status
 ```
 
-If you are really bored waiting for the sync to complete, you can watch what your masternode is doing on the network at any time by using tail to **monitor the debug.log** file in realtime:
+If you are really bored waiting for the sync to complete, you can watch what your zoonode is doing on the network at any time by using tail to **monitor the debug.log** file in realtime:
 
 ```bash
 sudo tail -f ~/.zoon/debug.log
 ```
 
-And for those who wonder what does **zoon.conf** file looks like for a typical masternode which the setup script generates, here's an example below...
+And for those who wonder what does **zoon.conf** file looks like for a typical zoonode which the setup script generates, here's an example below...
 
-Note that both, the __externalip__ should match the IP address and __masternodeprivkey__ should match the private key in your  __masternode.conf__ of your hot wallet in order for the masternode to function properly. If any of these two parameters change, they must be changed in both, the zoon.conf file on the masternode VPS (located in /root/.zoon directory) and masternode.conf on Hot Wallet PC (located in %appdata%/zoon folder).
+Note that both, the __externalip__ should match the IP address and __zoonodeprivkey__ should match the private key in your  __zoonode.conf__ of your hot wallet in order for the zoonode to function properly. If any of these two parameters change, they must be changed in both, the zoon.conf file on the zoonode VPS (located in /root/.zoon directory) and zoonode.conf on Hot Wallet PC (located in %appdata%/zoon folder).
 
 Example: 
 
@@ -185,33 +185,33 @@ server=1
 daemon=1
 maxconnections=30
 externalip= 198.251.72.126
-masternode=1
-masternodeprivkey= 7e8wzb4CUxKh6y2uabVc9GdeaE8GatUQt3Fe9L4LvqBE5T7vkYD
+zoonode=1
+zoonodeprivkey= 7e8wzb4CUxKh6y2uabVc9GdeaE8GatUQt3Fe9L4LvqBE5T7vkYD
 ```
 
 **In conclusion**
 
-The script adds a cron job which starts zoond daemon upon reboot. Try restarting your VPS server (just type reboot in Linux console) and see if your masternode comes back online automatically in a few minutes. Log back in using PuTTY and run the following command to monitor your masternode status:
+The script adds a cron job which starts zoond daemon upon reboot. Try restarting your VPS server (just type reboot in Linux console) and see if your zoonode comes back online automatically in a few minutes. Log back in using PuTTY and run the following command to monitor your zoonode status:
 
 ```
-watch -n 10 'zoon-cli masternode status && zoon-cli mnsync status'
+watch -n 10 'zoon-cli zoonode status && zoon-cli mnsync status'
 ```
 
-The expected output for a functioning masternode will eventually look like this:
+The expected output for a functioning zoonode will eventually look like this:
 
 ```
 {
   "vin": "CTxIn(COutPoint(cbe3c99bed2c874a14675c54004a5b5bfda8473b98bfbd80a15743c2a1117d4f, 1), scriptSig=)",
   "service": "188.166.24.178:8328",
   "payee": "oN3ZoisQkdsCuXj7799kEcvJkWk6Bhc4uJ",
-  "status": "Masternode successfully started"
+  "status": "zoonode successfully started"
 }
 {
   "AssetID": 999,
-  "AssetName": "MASTERNODE_SYNC_FINISHED",
+  "AssetName": "ZOONODE_SYNC_FINISHED",
   "Attempt": 0,
   "IsBlockchainSynced": true,
-  "IsMasternodeListSynced": true,
+  "IszoonodeListSynced": true,
   "IsWinnersListSynced": true,
   "IsSynced": true,
   "IsFailed": false
@@ -219,11 +219,11 @@ The expected output for a functioning masternode will eventually look like this:
 
 ```
 
-**Advanced masternode monitoring script: nodemon.sh**
+**Advanced zoonode monitoring script: nodemon.sh**
 
-The main purpose of this simple script is to monitor **masternode status and peer connections** in real-time. It will display all current __outbound__ connections of your masternode with great amount of statistis which can be used for troubleshooting of sync issues.
+The main purpose of this simple script is to monitor **zoonode status and peer connections** in real-time. It will display all current __outbound__ connections of your zoonode with great amount of statistis which can be used for troubleshooting of sync issues.
 
-Typically you should see more than a few nodes listed in the table and the amount of data sent/received should be updating every several seconds on a healthy masternode.
+Typically you should see more than a few nodes listed in the table and the amount of data sent/received should be updating every several seconds on a healthy zoonode.
 
 Currently Zoon nodes will display most (if not all) peers with IPv6 addresses. This is normal as long as the data is being transferred and peers stay connected for a long time. Initially, when the node is just started, the outbound connection table may not show any peers for quite some time. It may take several hours to build up a healthy and stable list of peers.
 
@@ -247,30 +247,30 @@ Address               (ms)   (KBytes)   Block  Syncd  Blocks  (min)  Score
 ===========================================================================
  17:51:38 up 23:52,  1 user,  load average: 0.00, 0.00, 0.00
 ===========================================================================
-Masternode Status:
-# Zoon masternode status
+zoonode Status:
+# Zoon zoonode status
 {
   "outpoint": "a71513f3c29a44eea69bb90759d4cbc89c7594c41fa4932e309617a6faeccafe-1",
   "service": "188.166.24.178:8328",
   "payee": "oS8M3Unrm4tQ21Ew9g3ryuqYB2gjExjXRt",
-  "status": "Masternode successfully started"
+  "status": "zoonode successfully started"
 }
 ===========================================================================
 Sync Status:
 # Zoon mnsync status
 {
   "AssetID": 999,
-  "AssetName": "MASTERNODE_SYNC_FINISHED",
+  "AssetName": "ZOONODE_SYNC_FINISHED",
   "AssetStartTime": 1528558346,
   "Attempt": 0,
   "IsBlockchainSynced": true,
-  "IsMasternodeListSynced": true,
+  "IsZoonodeListSynced": true,
   "IsWinnersListSynced": true,
   "IsSynced": true,
   "IsFailed": false
 }
 ===========================================================================
-Masternode Information:
+zoonode Information:
 # Zoon getinfo
 {
   "version": 120502,
@@ -300,7 +300,7 @@ Press Ctrl-C to Exit...
 ```
 
 
-If you found this script and masternode setup guide helpful...,
+If you found this script and zoonode setup guide helpful...,
 
 ...please donate to the devfound: ZOON  **ofQzJU37B2a7G2EZ52qyhKjV6pAqJ3KYpp**,
 or BTC to **3H1JNkydHxDbhoXLREpxXccvyNh7Awr2jX**
