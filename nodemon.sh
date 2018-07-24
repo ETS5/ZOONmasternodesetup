@@ -22,7 +22,7 @@ zoon-cli -datadir=$datadir getpeerinfo | jq -r '.[] | select(.inbound==false) | 
 echo '==========================================================================='
 uptime
 echo '==========================================================================='
-echo 'Masternode Status: \n# zoon-cli masternode status' && zoon-cli -datadir=$datadir masternode status
+echo 'Masternode Status: \n# zoon-cli zoonode status' && zoon-cli -datadir=$datadir zoonode status
 echo '==========================================================================='
 echo 'Sync Status: \n# zoon-cli mnsync status' &&  zoon-cli -datadir=$datadir mnsync status
 echo '==========================================================================='
